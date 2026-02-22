@@ -35,3 +35,15 @@ small_tools
 scancel_job.py
 results
 template_resources
+
+# Claude Code
+.claude/
+nul
+
+# Model weights and data
+pretrained_models/
+resources/
+test_audios/
+test_results/
+unitalker_data_release_V1/
+unitalker_data_release_V1.zip

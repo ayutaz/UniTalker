@@ -29,7 +29,7 @@ torchvision = [{ index = "pytorch-cu121" }]
 torchaudio = [{ index = "pytorch-cu121" }]
 
 [tool.uv]
-no-build-isolation-package = ["chumpy"]
+no-build-isolation-package = ["chumpy", "pytorch3d"]
 
 # pytorch3d (レンダリング用、オプション):
 # PyPIに公開されていないため、必要な場合は以下で追加:

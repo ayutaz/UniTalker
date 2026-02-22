@@ -243,7 +243,7 @@ def array_to_video(
         image_array = pad_for_libx264(image_array)
         height, width = image_array.shape[1], image_array.shape[2]
     command = [
-        '/usr/bin/ffmpeg',
+        'ffmpeg',
         '-y',  # (optional) overwrite output file if it exists
         '-f',
         'rawvideo',

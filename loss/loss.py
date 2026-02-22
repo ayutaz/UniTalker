@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import pickle
 import torch
@@ -335,6 +336,8 @@ class UniTalkerLoss(nn.Module):
 
         loss_module_dict = {}
         for k, v in loss_config.items():
+            if k == 'flame_params_from_dadhead' and not os.path.exists(v['args'].get('flame_model_path', '')):
+                continue
             loss_module = v['class'](**v['args'])
             loss_module_dict[k] = loss_module
         self.loss_module_dict = nn.ModuleDict(loss_module_dict)
