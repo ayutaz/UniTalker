@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+このファイルは、本リポジトリのコードを扱う際に Claude Code (claude.ai/code) へガイダンスを提供するものです。
 
 ## プロジェクト概要
 
@@ -51,12 +51,12 @@ uv run python -m main.train --config config/unitalker.yaml lr 0.0001 batch_size 
 
 | データセット | アノテーション型 | PCA使用 |
 |---|---|---|
-| D0 BIWI | BIWI_23370_vertices (70110次元) | Yes |
-| D1 VOCASET | FLAME_5023_vertices (15069次元) | Yes |
-| D2 MeshTalk | meshtalk_6172_vertices (18516次元) | Yes |
-| D3 HDTF, D4 RAVDESS | 3DETF_blendshape_weight (52次元) | No |
-| D5 FaceForensics++ | flame_params_from_dadhead (413次元) | No |
-| D6 中国語音声, D7 歌 | inhouse_blendshape_weight (51次元) | No |
+| D0 BIWI | BIWI_23370_vertices (70110次元) | あり |
+| D1 VOCASET | FLAME_5023_vertices (15069次元) | あり |
+| D2 MeshTalk | meshtalk_6172_vertices (18516次元) | あり |
+| D3 HDTF, D4 RAVDESS | 3DETF_blendshape_weight (52次元) | なし |
+| D5 FaceForensics++ | flame_params_from_dadhead (413次元) | なし |
+| D6 中国語音声, D7 歌 | inhouse_blendshape_weight (51次元) | なし |
 
 ### 設計上の重要ポイント
 

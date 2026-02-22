@@ -1,7 +1,7 @@
 
-# UniTalker: Scaling up Audio-Driven 3D Facial Animation through A Unified Model [ECCV2024]
+# UniTalker: 統一モデルによる音声駆動3Dフェイシャルアニメーションのスケールアップ [ECCV2024]
 
-## Useful Links
+## 関連リンク
 
 <div align="center">
     <a href="https://x-niper.github.io/projects/UniTalker/" class="button"><b>[Homepage]</b></a> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -14,35 +14,35 @@
 </div>
 
 
-> UniTalker generates realistic facial motion from different audio domains, including clean and noisy voices in various languages, text-to-speech-generated audios, and even noisy songs accompanied by back-ground music.
-> 
-> UniTalker can output multiple annotations.
-> 
-> For datasets with new annotations, one can simply plug new heads into UniTalker and train it with existing datasets or solely with new ones, avoiding retopology.
+> UniTalkerは、クリーンな音声やノイズを含む多言語音声、テキスト読み上げ生成音声、さらにはBGM付きのノイズを含む歌声など、さまざまな音声ドメインからリアルな顔のモーションを生成します。
+>
+> UniTalkerは複数のアノテーション形式で出力が可能です。
+>
+> 新しいアノテーション形式を持つデータセットに対しては、UniTalkerに新しいヘッドをプラグインし、既存のデータセットまたは新しいデータセットのみで学習させることができ、リトポロジーが不要です。
 
-## Installation
+## インストール
 
 ```bash
 uv sync
 ```
 
-## Inference
+## 推論
 
-### Download checkpoints, PCA models and template resources
+### チェックポイント、PCAモデル、テンプレートリソースのダウンロード
 
-[UniTalker-B-[D0-D7]](https://drive.google.com/file/d/1PmF8I6lyo0_64-NgeN5qIQAX6Bg0yw44/view?usp=sharing): The base model in paper. Download it and place it in `./pretrained_models` .
+[UniTalker-B-[D0-D7]](https://drive.google.com/file/d/1PmF8I6lyo0_64-NgeN5qIQAX6Bg0yw44/view?usp=sharing): 論文のベースモデルです。ダウンロードして `./pretrained_models` に配置してください。
 
-[UniTalker-L-[D0-D7]](https://drive.google.com/file/d/1sH2T7KLFNjUnTM-V1eRMM1Tytxd2sYAp/view?usp=sharing): The default model in paper. Please first try the base model  to run the pipeline through.
+[UniTalker-L-[D0-D7]](https://drive.google.com/file/d/1sH2T7KLFNjUnTM-V1eRMM1Tytxd2sYAp/view?usp=sharing): 論文のデフォルトモデルです。まずベースモデルでパイプラインの動作確認を行ってください。
 
-[Unitalker-data-release-V1](https://drive.google.com/file/d/1Un7TB0Z5A1CG6bgeqKlhnSOECFN-C6KK/view?usp=sharing): The released datasets, PCA models, data-split json files and id-template numpy array. Download and unzip it in this repo.
+[Unitalker-data-release-V1](https://drive.google.com/file/d/1Un7TB0Z5A1CG6bgeqKlhnSOECFN-C6KK/view?usp=sharing): 公開データセット、PCAモデル、データ分割用JSONファイル、IDテンプレートのnumpy配列です。ダウンロードしてこのリポジトリ内で解凍してください。
 
-[FLAME2020](https://flame.is.tue.mpg.de/download.php): Please download FLAME 2020 and move generic_model.pkl into resources/binary_resources/flame.pkl.
+[FLAME2020](https://flame.is.tue.mpg.de/download.php): FLAME 2020をダウンロードし、generic_model.pklを resources/binary_resources/flame.pkl に移動してください。
 
 <!-- [PCA models](https://drive.google.com/file/d/1e0sG2vvdrtAMgwD5njctifhX0ai4eu3g/view?usp=sharing): download the pca models and unzip it in "./unitalker_data_release" -->
 
-Use `git lfs pull` to get `./resources.zip` and `./test_audios.zip` and unzip it in this repo.
+`git lfs pull` を実行して `./resources.zip` と `./test_audios.zip` を取得し、このリポジトリ内で解凍してください。
 
-Finally, these files should be organized as follows:
+最終的に、以下のようなファイル構成になります:
 
 ```text
 ├── pretrained_models
@@ -96,25 +96,25 @@ Finally, these files should be organized as follows:
 │       └── val.json
 ```
 
-### Demo
+### デモ
 
 ```bash
 uv run python -m main.demo --config config/unitalker.yaml test_out_path ./test_results/demo.npz
 uv run python -m main.render ./test_results/demo.npz ./test_audios ./test_results/
 ```
 
-## Train
+## 学習
 
-### Download Data
-[Unitalker-data-release-V1](https://drive.google.com/file/d/1qRBPsTdOWp72ty04oD1Q_ivtwMjrACLH/view?usp=sharing) contains D5, D6 and D7. The datasets have been processed and grouped into train, validation and test. Please use these three datasets to try the training step.
-If you want to train the model on the D0-D7, you need to download the datasets following these links: 
+### データのダウンロード
+[Unitalker-data-release-V1](https://drive.google.com/file/d/1qRBPsTdOWp72ty04oD1Q_ivtwMjrACLH/view?usp=sharing) にはD5、D6、D7が含まれています。データセットは処理済みで、train、validation、testに分割されています。まずこの3つのデータセットで学習ステップをお試しください。
+D0〜D7の全データセットでモデルを学習させる場合は、以下のリンクからデータセットをダウンロードしてください:
 [D0: BIWI](https://github.com/Doubiiu/CodeTalker/blob/main/BIWI/README.md).
 [D1: VOCASET](https://voca.is.tue.mpg.de/).
 [D2: meshtalk](https://github.com/facebookresearch/meshtalk?tab=readme-ov-file).
 [D4,D5: 3DETF](https://github.com/psyai-net/EmoTalk_release).
 
-### Modify Config and Train
-Please modify `dataset` and `duplicate_list` in `config/unitalker.yaml` according to the datasets you have prepared, ensuring that both lists maintain the same length.
+### 設定の変更と学習
+準備したデータセットに合わせて、`config/unitalker.yaml` 内の `dataset` と `duplicate_list` を変更してください。両方のリストの長さが一致するようにしてください。
 
 
 ```bash
