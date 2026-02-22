@@ -21,19 +21,9 @@
 > For datasets with new annotations, one can simply plug new heads into UniTalker and train it with existing datasets or solely with new ones, avoiding retopology.
 
 ## Installation
-### Environment
-- Linux
-- Python 3.10
-- Pytorch 2.2.0
-- CUDA 12.1
-- transformers 4.39.3
-- Pytorch3d 0.7.7 (Optional: just for rendering the results)
 
 ```bash
-  conda create -n unitalker python==3.10
-  conda activate unitalker
-  conda install pytorch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0 pytorch-cuda=12.1 -c pytorch -c nvidia
-  pip install transformers librosa tensorboardX smplx chumpy numpy==1.23.5 opencv-python
+uv sync
 ```
 
 ## Inference
@@ -109,8 +99,8 @@ Finally, these files should be organized as follows:
 ### Demo
 
 ```bash
-  python -m main.demo --config config/unitalker.yaml test_out_path ./test_results/demo.npz
-  python -m main.render ./test_results/demo.npz ./test_audios ./test_results/
+uv run python -m main.demo --config config/unitalker.yaml test_out_path ./test_results/demo.npz
+uv run python -m main.render ./test_results/demo.npz ./test_audios ./test_results/
 ```
 
 ## Train
@@ -128,5 +118,5 @@ Please modify `dataset` and `duplicate_list` in `config/unitalker.yaml` accordin
 
 
 ```bash
-python -m main.train --config config/unitalker.yaml 
+uv run python -m main.train --config config/unitalker.yaml
 ```

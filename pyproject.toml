@@ -1,0 +1,36 @@
+[project]
+name = "unitalker"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "chumpy>=0.70",
+    "librosa>=0.11.0",
+    "numpy==1.23.5",
+    "opencv-python>=4.8.1.78",
+    "pyyaml>=6.0.3",
+    "scikit-learn>=1.7.2",
+    "smplx>=0.1.28",
+    "tensorboardx>=2.6.4",
+    "torch==2.2.0",
+    "torchaudio==2.2.0",
+    "torchvision==0.17.0",
+    "tqdm>=4.67.3",
+    "transformers==4.39.3",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu121"
+url = "https://download.pytorch.org/whl/cu121"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu121" }]
+torchvision = [{ index = "pytorch-cu121" }]
+torchaudio = [{ index = "pytorch-cu121" }]
+
+[tool.uv]
+no-build-isolation-package = ["chumpy"]
+
+# pytorch3d (レンダリング用、オプション):
+# PyPIに公開されていないため、必要な場合は以下で追加:
+#   uv add "pytorch3d @ git+https://github.com/facebookresearch/pytorch3d.git@v0.7.7"
